@@ -1,0 +1,4 @@
+#Mon Jan 07 11:05:23 EST 2019
+base.0=/Users/demouser/Desktop/2019JTerm/AnagramsGame/app/build/intermediates/transforms/dexMerger/debug/5
+path.0=classes.dex
+renamed.0=classes.dex
