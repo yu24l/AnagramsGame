@@ -65,17 +65,25 @@ public class AnagramDictionary {
                 sizeToWords.put(length, newList);
             }
 
-            if(wordSet.add(word)) {
-                String sorted = sortLetters(word);
-                if (lettersToWord.containsKey(sorted)) // if key is present
-                    lettersToWord.get(sorted).add(word);
-                else { // otherwise, add key
-                    ArrayList<String> newList = new ArrayList<String>();
-                    newList.add(word);
-                    lettersToWord.put(sorted, newList);
-                }
-            }
+            // if not contain the key, add the key, then put the value in the map
+            String sorted = sortLetters(word);
+            if (!lettersToWord.containsKey(sorted)) // if key is present
+                lettersToWord.put(sorted, new ArrayList<String>());
+            lettersToWord.get(sorted).add(word);
+
+//            if(wordSet.add(word)) {
+//                String sorted = sortLetters(word);
+//                if (lettersToWord.containsKey(sorted)) // if key is present
+//                    lettersToWord.get(sorted).add(word);
+//                else { // otherwise, add key
+//                    ArrayList<String> newList = new ArrayList<String>();
+//                    newList.add(word);
+//                    lettersToWord.put(sorted, newList);
+//                }
+//            }
         }
+        Log.i(TAG, "wordlist size: " + wordList.size());
+        Log.i(TAG, "word (stop): " + lettersToWord.get(sortLetters("stop")));
     }
 
     public boolean isGoodWord(String word, String base) {
@@ -134,6 +142,7 @@ public class AnagramDictionary {
     private String sortLetters(String input) {
         char[] chars = input.toCharArray();
         Arrays.sort(chars);
-        return (Arrays.toString(chars));
+//        return (Arrays.toString(chars));
+        return new String(chars);
     }
 }
